@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 2026-03-09T11
+  labels:
+    app: 2026-03-09T11
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 2026-03-09T11
+  template:
+    metadata:
+      labels:
+        app: 2026-03-09T11
+    spec:
+      containers:
+      - name: 2026-03-09T11
+        image: 2026-03-09T11:27
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: 2026-03-09T11-svc
+spec:
+  selector:
+    app: 2026-03-09T11
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP

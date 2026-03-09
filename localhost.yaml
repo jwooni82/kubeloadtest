@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: localhost
+  labels:
+    app: localhost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: localhost
+  template:
+    metadata:
+      labels:
+        app: localhost
+    spec:
+      containers:
+      - name: localhost
+        image: localhost:8080
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: localhost-svc
+spec:
+  selector:
+    app: localhost
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP

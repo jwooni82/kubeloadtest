@@ -85,7 +85,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: minio-svc
+                name: minio
                 port:
                   number: 9000
     - host: minio.local
@@ -95,6 +95,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: minio-svc
+                name: minio
                 port:
                   number: 9001

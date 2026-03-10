@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 레디스앱
+  labels:
+    app: 레디스앱
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 레디스앱
+  template:
+    metadata:
+      labels:
+        app: 레디스앱
+    spec:
+      containers:
+      - name: 레디스앱
+        image: 레디스앱:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: 레디스앱-svc
+spec:
+  selector:
+    app: 레디스앱
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP
